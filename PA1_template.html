@@ -121,13 +121,11 @@ $(document).ready(function () {
 
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>1. Loading and preprocessing the data</h2>
-<p>Download the datasets and unzip them into the WD.</p>
-<pre class="r"><code>if (!file.exists(&quot;./activity.csv&quot;)) {
+<p>Check if the dataset exists already in the working directory. If not, download the datasets and unzip them into the WD.</p>
+<pre class="r"><code>if (!file.exists(&quot;./activity.zip&quot;)) {
 URL &lt;- &quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;
-temp &lt;- tempfile()
-download.file(URL,temp, method = &quot;curl&quot;)
-unzip (temp)
-rm(temp, URL)}</code></pre>
+download.file(URL,&quot;./activity.zip&quot;)}
+unzip(&quot;./activity.zip&quot;, &quot;activity.csv&quot;)</code></pre>
 <p>Load the data into R</p>
 <pre class="r"><code>activity &lt;- read.csv(&quot;./activity.csv&quot;)</code></pre>
 </div>

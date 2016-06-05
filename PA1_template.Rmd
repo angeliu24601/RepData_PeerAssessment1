@@ -6,15 +6,14 @@ output:
 ---
 
 ##1. Loading and preprocessing the data
-Download the datasets and unzip them into the WD.
+Check if the dataset exists already in the working directory. If not, download the datasets and unzip them into the WD.
 ```{r}
-if (!file.exists("./activity.csv")) {
+if (!file.exists("./activity.zip")) {
 URL <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
-temp <- tempfile()
-download.file(URL,temp, method = "curl")
-unzip (temp)
-rm(temp, URL)}
+download.file(URL,"./activity.zip")}
+unzip("./activity.zip", "activity.csv")
 ``` 
+
 Load the data into R
 ```{r}
 activity <- read.csv("./activity.csv")
